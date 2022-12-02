@@ -1,0 +1,22 @@
+{% extends 'baseLayout.html' %}
+
+{% block main %}
+
+<div class="row">
+    <h2>{{article.title}}</h2>
+</div>
+
+<div class="row">
+    <p>{{article.contenu.html|safe}}</p>
+</div>
+<div class="row">
+    <p>{{article.description1}}</p>
+</div>
+<div class="row">
+    <p>{{article.description2}}</p>
+</div>
+<div class="row">
+    <p>{{article.description3}}</p>
+</div>
+
+{% endblock  %}

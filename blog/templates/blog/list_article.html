@@ -1,0 +1,28 @@
+{% extends 'baseLayout.html' %}
+{% load static %}
+{% block title %}Les Articles{% endblock  %}
+{% block main %}
+    {% for article in articles %}
+      {% comment %} <div class="card" style="width: 18rem;"> {% endcomment %}
+      <div class="card mt-5" style="width: 30%">
+        {% if article.image %}
+          <img src="{{article.emage.url}}" class="card-img-top" alt="...">
+        {% else %}
+          <img src="{% static 'images/imgNotFound.png' %}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'detail_article' article.id %}"> {{article.titre}}</a></h5>
+          <p class="card-text">{{article.contenu.html|safe|truncatewords:20}}</p>
+          <div class='row'>
+            <P class="col-6"> Crée le : {{article.created_at}}</p>
+            <P class="col-6"> Cathegorie : {{article.cathegorie}}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <video controls width="600" height="400">
+      <source src="{% static 'video/SAPRENA_20220630.mp4' %}" type="video/mp4">
+    </video>
+
+{% endblock  %}
